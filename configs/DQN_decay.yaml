@@ -1,0 +1,26 @@
+experiment_name: "DQN_Decay_10x10_EpsilonChange_E0.5_layer3"
+device: cuda  # 'cuda' for GPU acceleration or 'cpu'
+agent: "DQN"
+maze_file: "mazes/10x10.txt"
+
+hyperparameters:
+  hidden_size: 256  # Neural network hidden layer size
+  num_layers : 3
+  gamma: 0.99  # Discount factor
+  epsilon_policy: "decay"  # Exploration strategy
+  epsilon: 0.5  # Initial epsilon
+  epsilon_min: 0.01  # Minimum epsilon value
+  epsilon_decay: 0.99  # Decay rate for epsilon
+  batch_size: 128  # Training batch size
+  target_update: 5  # Target network update frequency
+
+training:
+  episodes: 500
+  max_steps: 200
+  render: True
+
+viz:
+  num_plots: 4
+  window_size: null
+
+save_dir: "results/dqn/decay/"

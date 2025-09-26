@@ -1,0 +1,22 @@
+experiment_name: "Q_Learning_15"
+agent: "Q-learning"
+maze_file: "mazes/15x15.txt"
+
+hyperparameters:
+  alpha: 0.1
+  gamma: 0.99
+  epsilon_policy: "performance_based"
+  epsilon: 1.0
+  epsilon_min: 0.01
+  epsilon_decay: 0.99
+
+training:
+  episodes: 600
+  max_steps: 200
+  render: True
+
+viz:
+  num_plots: 4
+  window_size: null
+
+save_dir: "results/q_learning/performance/"

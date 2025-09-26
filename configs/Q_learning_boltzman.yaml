@@ -1,0 +1,22 @@
+experiment_name: "Q_Learning_Maze_10x10_Boltzmann_TempChange_T0.5"
+agent: "Q-learning"
+maze_file: "mazes/10x10_1.txt"
+
+hyperparameters:
+  alpha: 0.1
+  gamma: 0.99
+  epsilon_policy: "boltzmann"  # Use Boltzmann exploration strategy
+  temperature: 0.5  # Initial temperature
+  temperature_min: 0.01  # Minimum temperature value
+  temperature_decay: 0.995  # Temperature decay rate
+
+training:
+  episodes: 800
+  max_steps: 200
+  render: True
+
+viz:
+  num_plots: 4
+  window_size: null
+
+save_dir: "results/q_learning/boltzmann/"

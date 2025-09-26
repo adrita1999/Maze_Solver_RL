@@ -1,0 +1,27 @@
+experiment_name: "DQN_Boltzmann_10x10_T0.7"
+device: cuda
+agent: "DQN"
+maze_file: "mazes/10x10.txt"
+
+hyperparameters:
+  num_layers: 2
+  hidden_size: 64
+  gamma: 0.99
+  epsilon_policy: "boltzmann"  # Use Boltzmann strategy
+  temperature: 1.0  # Initial temperature value
+  temperature_min: 0.01  # Minimum temperature
+  temperature_decay: 0.99  # Decay rate for temperature
+  batch_size: 128
+  target_update: 5
+
+training:
+  episodes: 500
+  max_steps: 200
+  render: True
+
+viz:
+  num_plots: 4
+  window_size: null
+
+save_dir: "results/dqn/boltzmann/"
+

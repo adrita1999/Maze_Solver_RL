@@ -1,0 +1,27 @@
+# DQN with Performance-Based Epsilon Decay
+experiment_name: "DQN_Performance_15"
+device: cuda  # Use 'cuda' for GPU or 'cpu' if no GPU is available
+agent: "DQN"  # Specifies the agent type
+maze_file: "mazes/15x15.txt"  # Path to the maze file
+
+hyperparameters:
+  num_layers: 2
+  hidden_size: 512  # Size of the hidden layers in the neural network
+  gamma: 0.99  # Discount factor for future rewards
+  epsilon_policy: "performance_based"  # Exploration strategy
+  epsilon: 1.0  # Initial epsilon value (for performance-based policy)
+  epsilon_min: 0.01  # Minimum allowed epsilon value
+  epsilon_decay: 0.99  # Decay rate for epsilon
+  batch_size: 128  # Number of experiences sampled per training step
+  target_update: 5  # Frequency (in episodes) of target network updates
+
+training:
+  episodes: 600  # Number of episodes to train for
+  max_steps: 200  # Maximum steps allowed per episode
+  render: True  # Whether to visualize training (slows down execution)
+
+viz:
+  num_plots: 4  # Number of episodes to visualize for trajectory heatmaps
+  window_size: null  # Moving average window size (null auto-adjusts based on data size)
+
+save_dir: "results/dqn/performance"  # Directory to save experiment results

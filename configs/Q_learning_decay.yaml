@@ -1,0 +1,23 @@
+# Q-Learning with Epsilon Decay
+experiment_name: "Q_Learning_Maze_10x10_Decay_EpsilonDecayChange_ED0.99"
+agent: "Q-learning"
+maze_file: "mazes/10x10_1.txt"
+
+hyperparameters:
+  alpha: 0.1  # Learning rate for Q-learning updates
+  gamma: 0.99  # Discount factor for future rewards
+  epsilon_policy: "decay"  # Exploration strategy
+  epsilon: 0.5 # Initial epsilon value
+  epsilon_min: 0.01  # Minimum epsilon value
+  epsilon_decay: 0.99  # Decay rate for epsilon
+
+training:
+  episodes: 500  # Number of episodes to train for
+  max_steps: 200  # Maximum steps per episode
+  render: True  # Enable visualization during training
+
+viz:
+  num_plots: 4  # Number of episodes for trajectory visualization
+  window_size: null  # Auto-adjust moving average window size
+
+save_dir: "results/q_learning/decay/"  # Output directory

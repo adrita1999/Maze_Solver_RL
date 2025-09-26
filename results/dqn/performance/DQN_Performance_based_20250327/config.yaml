@@ -1,0 +1,22 @@
+agent: DQN
+device: cuda
+experiment_name: DQN_Performance_based
+hyperparameters:
+  batch_size: 128
+  epsilon: 1.0
+  epsilon_decay: 0.99
+  epsilon_min: 0.01
+  epsilon_policy: performance_based
+  gamma: 0.99
+  hidden_size: 512
+  num_layers: 2
+  target_update: 5
+maze_file: mazes/10x10.txt
+save_dir: results/dqn/performance
+training:
+  episodes: 500
+  max_steps: 200
+  render: true
+viz:
+  num_plots: 4
+  window_size: null

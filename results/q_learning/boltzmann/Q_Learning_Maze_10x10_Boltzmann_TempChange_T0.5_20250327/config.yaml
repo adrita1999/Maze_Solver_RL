@@ -1,0 +1,18 @@
+agent: Q-learning
+experiment_name: Q_Learning_Maze_10x10_Boltzmann_TempChange_T0.5
+hyperparameters:
+  alpha: 0.1
+  epsilon_policy: boltzmann
+  gamma: 0.99
+  temperature: 0.5
+  temperature_decay: 0.995
+  temperature_min: 0.01
+maze_file: mazes/10x10_1.txt
+save_dir: results/q_learning/boltzmann/
+training:
+  episodes: 800
+  max_steps: 200
+  render: true
+viz:
+  num_plots: 4
+  window_size: null
