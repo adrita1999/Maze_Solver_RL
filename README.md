@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This project implements a **maze-solving** environment using **Reinforcement Learning (RL)**. It allows students to compare **Deep Q-Networks (DQN)** and **Q-Learning** in solving a maze by experimenting with different hyperparameters and epsilon strategies (decay, Boltzmann, performance-based). The project logs results and generates visualizations to analyze performance.
+This project implements a **maze-solving** environment using **Reinforcement Learning (RL)**. 
 
 ## Installation
 
@@ -32,32 +32,7 @@ python rl/maze_editor.py --size 10
 You should then follow the instructions in the terminal to create the maze and save it to a file. This file can then be used in your experiments.
 
 ## Experiment Configs 
-Experiments are configured using YAML files. Below is the structure of a sample config (DQN_decay.yaml):
-
-```yaml
-experiment_name: "DQN_Decay_10x10"
-device: cuda  # Use "cpu" if GPU is not available
-agent: "DQN"
-maze_file: "mazes/10x10.txt"
-
-hyperparameters:
-  hidden_size: 256
-  gamma: 0.99
-  epsilon_policy: "decay"
-  epsilon: 1.0
-  epsilon_min: 0.1
-  epsilon_decay: 0.99
-  batch_size: 128
-  target_update: 5
-
-training:
-  episodes: 500
-  max_steps: 200
-  render: True
-
-viz:
-  num_plots: 4
-  window_size: null  # Auto-detect window size
+Experiments are configured using YAML files. 
 
 save_dir: "results/dqn_decay/"
 ```
@@ -91,18 +66,3 @@ The project generates the following visualizations:
 
 All visualizations are saved as images in the `save_dir`.  
 
-### Important Note:
-
-The saved results can and should be used in your analysis and report. The current visualizations are just there to demonstrate how to load and visualize results. It will be up to you to create the necessary visualizations for your analysis.
-
-
-## Quickstart
-
-To run an experiment, use the following command:
-
-```bash
-python run.py --config configs/DQN_decay.yaml
-```
-
-#Extra credits:
-If you attempt any extra credit describe here.

@@ -66,32 +66,36 @@ def train(config):
     
     logger = ExperimentLogger(save_dir)
     
+
+    # Loop over the total number of training episodes
     for episode in range(config['training']['episodes']):
-        episode_start_time = time.time()
+        episode_start_time = time.time() # Record the start time of this episode for timing stats
+        # Reset the environment to the starting position
         state = env.reset()
+        # Initialize counters for total reward, trajectory, and loss in this episode
         total_reward, episode_trajectory, ep_loss = 0, [], 0
         
+        # Limit the number of steps per episode to prevent infinite loops
         for step in range(config['training']['max_steps']):
+            # Agent chooses an action based on the current state
             action = agent.act(state)
+            # Environment executes the action: returns next state, reward, and whether goal is reached
             next_state, reward, done = env.step(action)
+            # Update the Q-table with this transition
             agent.remember(state, action, reward, next_state, done)
-            loss = agent.train()
-            ep_loss += loss if loss else 0
-            state = next_state
-            total_reward += reward
-            episode_trajectory.append(env.agent_pos)
+            loss = agent.train() 
+            ep_loss += loss if loss else 0 # Track cumulative loss
+            state = next_state # Move to the next state
+            total_reward += reward # Accumulate total reward earned in this episode
+            episode_trajectory.append(env.agent_pos) # Log agent's position after this move
             
+            # If rendering is enabled, visually display the maze after each step
             if env.show_maze:
                 env.render()
             
+            # If the agent reaches the goal, exit the loop early (episode complete)
             if done:
                 break
-        
-        episode_time = time.time() - episode_start_time
-        logger.log_episode(total_reward, ep_loss, episode_trajectory,
-                         episode_time, step + 1, agent.epsilon)
-        
-        agent.update()
         
         print(f"Episode {episode+1}: Reward={total_reward:.2f}, "
               f"Time={episode_time:.2f}s",end=' '
