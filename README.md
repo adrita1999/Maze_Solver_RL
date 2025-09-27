@@ -34,7 +34,7 @@ You should then follow the instructions in the terminal to create the maze and s
 ## Experiment Configs 
 Experiments are configured using YAML files. 
 
-save_dir: "results/dqn_decay/"
+save_dir: "results/q_learning/"
 ```
 
 Modify this file to change parameters such as:
