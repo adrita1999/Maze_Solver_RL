@@ -46,7 +46,7 @@ It will be up to you to create the necessary YAML files for your experiments and
 
 ## Saved Results and Visualization
 
-After training, results are saved in the experiment's `save_dir`, e.g., `results/dqn_decay/`. The following files are stored:
+After training, results are saved in the experiment's `save_dir`, e.g., `results/q_learning/`. The following files are stored:
 
 - **`config.yaml`** - The YAML configuration used for the experiment
 - **`rewards.npy`** - Rewards per episode
